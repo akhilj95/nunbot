@@ -2,6 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
     <xacro:include filename="inertial_macros.xacro"/>
+    <xacro:include filename="omniwheel_macros.xacro"/>
 
     <!-- Robot dimensions -->
     <xacro:property name="chassis_diameter" value="0.315"/>
@@ -13,7 +14,7 @@
     <xacro:property name="wheel_thickness" value="0.04"/>
     <xacro:property name="wheel_mass" value="0.05"/>
     <!-- Wheels placed at radius from center equal to chassis radius -->
-    <xacro:property name="wheel_offset_radius" value="${chassis_diameter / 2}"/>
+    <xacro:property name="wheel_offset_radius" value="${(chassis_diameter / 2)-0.0075}"/>
     <xacro:property name="wheel_offset_z" value="0.05"/>
 
     <material name="white">
@@ -83,4 +84,9 @@
         <material>Gazebo/Orange</material>
     </gazebo>  
 
+    <!-- Wheels-->
+    <xacro:omni_wheel name="wheel_1" parent="base_link" angle_deg="60" yaw="${pi-pi/6}"/>
+    <xacro:omni_wheel name="wheel_2" parent="base_link" angle_deg="180" yaw="${-pi/2}"/>
+    <xacro:omni_wheel name="wheel_3" parent="base_link" angle_deg="300" yaw="${pi/6}"/>
+    
 </robot>
