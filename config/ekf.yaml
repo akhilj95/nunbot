@@ -1,6 +1,6 @@
 ekf_filter_node:
   ros__parameters:
-    frequency: 10.0  # Hz rate at which the EKF outputs fused data
+    frequency: 20.0  # Hz rate at which the EKF outputs fused data
     two_d_mode: true  # True if working in planar 2D environment
 
     # Set the frame IDs explicitly
