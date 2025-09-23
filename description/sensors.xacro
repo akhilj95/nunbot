@@ -2,21 +2,21 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
     <joint name="imu_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="imu_link"/>
+        <parent link="${robot_name}/base_link"/>
+        <child link="${robot_name}/imu_link"/>
         <origin xyz="0 0 0.15" rpy="0 0 ${-pi / 4}"/>
     </joint>
 
-    <link name="imu_link">
+    <link name="${robot_name}/imu_link">
     </link>
 
     <joint name="camera_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="camera_link"/>
+        <parent link="${robot_name}/base_link"/>
+        <child link="${robot_name}/camera_link"/>
         <origin xyz="0.14 0.05 0.15" rpy="${pi / 2} 0 ${pi / 2}"/>
     </joint>
 
-    <link name="camera_link">
+    <link name="${robot_name}/camera_link">
     </link>
 
 </robot>

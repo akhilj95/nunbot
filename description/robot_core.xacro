@@ -4,6 +4,8 @@
     <xacro:include filename="inertial_macros.xacro"/>
     <xacro:include filename="omniwheel_macros.xacro"/>
 
+    <xacro:property name="robot_name" value="nunbot"/>
+
     <!-- Robot dimensions -->
     <xacro:property name="chassis_diameter" value="0.315"/>
     <xacro:property name="chassis_height" value="0.25"/>
@@ -37,31 +39,29 @@
         <color rgba="1 0 0 1"/>
     </material>
 
-    <!-- BASE LINK -->
-
-    <link name="base_link">
-
+    <!-- BASE_FOOTPRINT LINK -->
+    <link name="${robot_name}/base_footprint">
     </link>
 
     <!-- BASE_FOOTPRINT LINK -->
-
     <joint name="base_footprint_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="base_footprint"/>
+        <parent link="${robot_name}/base_footprint"/>
+        <child link="${robot_name}/base_link"/>
         <origin xyz="0 0 0" rpy="0 0 0"/>
     </joint>
 
-    <link name="base_footprint">
+    <!-- BASE LINK -->
+    <link name="${robot_name}/base_link">
     </link>
 
     <!-- CHASSIS LINK -->
     <joint name="chassis_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="chassis"/>
+        <parent link="${robot_name}/base_link"/>
+        <child link="${robot_name}/chassis"/>
         <origin xyz="0 0 ${wheel_radius+0.01}"/>
     </joint>
 
-    <link name="chassis">
+    <link name="${robot_name}/chassis">
         <visual>
             <origin xyz="0 0 ${chassis_height/2}"/>
             <geometry>
@@ -80,13 +80,13 @@
         </xacro:inertial_cylinder>
     </link>
 
-    <gazebo reference="chassis">
+    <gazebo reference="${robot_name}/chassis">
         <material>Gazebo/Orange</material>
     </gazebo>  
 
     <!-- Wheels-->
-    <xacro:omni_wheel name="wheel_1" parent="base_link" angle_deg="60" yaw="${pi-pi/6}"/>
-    <xacro:omni_wheel name="wheel_2" parent="base_link" angle_deg="180" yaw="${-pi/2}"/>
-    <xacro:omni_wheel name="wheel_3" parent="base_link" angle_deg="300" yaw="${pi/6}"/>
+    <xacro:omni_wheel name="${robot_name}/wheel_1" parent="${robot_name}/base_link" angle_deg="60" yaw="${pi-pi/6}"/>
+    <xacro:omni_wheel name="${robot_name}/wheel_2" parent="${robot_name}/base_link" angle_deg="180" yaw="${-pi/2}"/>
+    <xacro:omni_wheel name="${robot_name}/wheel_3" parent="${robot_name}/base_link" angle_deg="300" yaw="${pi/6}"/>
     
 </robot>
