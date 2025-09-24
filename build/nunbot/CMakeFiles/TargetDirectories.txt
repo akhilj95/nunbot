@@ -1,0 +1,9 @@
+/home/labtech/nunbot_ros_ws/src/nunbot/build/nunbot/CMakeFiles/uninstall.dir
+/home/labtech/nunbot_ros_ws/src/nunbot/build/nunbot/CMakeFiles/nunbot_uninstall.dir
+/home/labtech/nunbot_ros_ws/src/nunbot/build/nunbot/CMakeFiles/test.dir
+/home/labtech/nunbot_ros_ws/src/nunbot/build/nunbot/CMakeFiles/edit_cache.dir
+/home/labtech/nunbot_ros_ws/src/nunbot/build/nunbot/CMakeFiles/rebuild_cache.dir
+/home/labtech/nunbot_ros_ws/src/nunbot/build/nunbot/CMakeFiles/list_install_components.dir
+/home/labtech/nunbot_ros_ws/src/nunbot/build/nunbot/CMakeFiles/install.dir
+/home/labtech/nunbot_ros_ws/src/nunbot/build/nunbot/CMakeFiles/install/local.dir
+/home/labtech/nunbot_ros_ws/src/nunbot/build/nunbot/CMakeFiles/install/strip.dir

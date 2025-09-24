@@ -1,0 +1,1 @@
+/home/labtech/nunbot_ros_ws/src/nunbot/build/nunbot/ament_cmake_environment_hooks/local_setup.sh
