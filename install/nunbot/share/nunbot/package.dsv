@@ -1,8 +1,0 @@
-source;share/nunbot/hook/cmake_prefix_path.ps1
-source;share/nunbot/hook/cmake_prefix_path.dsv
-source;share/nunbot/hook/cmake_prefix_path.sh
-source;share/nunbot/local_setup.bash
-source;share/nunbot/local_setup.dsv
-source;share/nunbot/local_setup.ps1
-source;share/nunbot/local_setup.sh
-source;share/nunbot/local_setup.zsh
