@@ -14,10 +14,15 @@ def generate_launch_description():
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
+    # Use one of the following map names in the following path definition
+    # 'museum_nav2.yaml'
+    # 'nav2_map_labtech.yaml'
+    map_file = LaunchConfiguration('map')
+
     # Paths to your existing nunbot launch files
     nunbot_pkg_share = get_package_share_directory('nunbot')
-    urdf_launch_path = os.path.join(nunbot_pkg_share, 'launch', 'rsp.launch.py')  # replace with your actual urdf launch file name
-    nav2_launch_path = os.path.join(nunbot_pkg_share, 'launch', 'nav2.launch.py')  # replace with your nav2 launch file name
+    urdf_launch_path = os.path.join(nunbot_pkg_share, 'launch', 'rsp.launch.py')  # Launch file for robot state publisher
+    nav2_launch_path = os.path.join(nunbot_pkg_share, 'launch', 'nav2.launch.py')  # Launch Nav2 using Launch script
 
     # External launch files from other packages
     sllidar_launch_path = os.path.join(get_package_share_directory('sllidar_ros2'), 'launch', 'sllidar_a1_launch.py')
@@ -34,6 +39,16 @@ def generate_launch_description():
         )
     )
 
+    # Declare map argument
+    ld.add_action(
+        DeclareLaunchArgument(
+            'map',
+            #default_value=os.path.join(nunbot_pkg_share, 'maps', 'museum_nav2.yaml'),
+            default_value=os.path.join(nunbot_pkg_share, 'maps', 'nav2_map_labtech.yaml'),
+            description='Full path to map file'
+        )
+    )
+
     # Include your nunbot URDF launch file
     ld.add_action(
         IncludeLaunchDescription(
@@ -46,7 +61,10 @@ def generate_launch_description():
     ld.add_action(
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(nav2_launch_path),
-            launch_arguments={'use_sim_time': use_sim_time}.items()
+            launch_arguments={
+                'use_sim_time': use_sim_time,
+                'map': map_file
+            }.items()
         )
     )
 
@@ -66,7 +84,7 @@ def generate_launch_description():
         )
     )
 
-    # Launch nunbot_base_node (node from another package)
+    # Launch nunbot_base_node (node for communicating with robot base)
     ld.add_action(
         Node(
             package='nunbot_base',

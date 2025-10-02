@@ -19,4 +19,6 @@
     <link name="${robot_name}/camera_link">
     </link>
 
+    <!-- TODO: ADD ir_distance_0/1_frame as mentioned in nunbot_base -->
+
 </robot>

@@ -10,32 +10,32 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
-    map_dir = LaunchConfiguration(
-        'map',
-        default=os.path.join(
-            get_package_share_directory('nunbot'),
-            'maps',
-            'museum_nav2.yaml'))
+    
+    default_map_path = os.path.join(
+        get_package_share_directory('nunbot'),
+        'maps',
+        'museum_nav2.yaml'
+    )
+    map_file = LaunchConfiguration('map')
 
-    param_file_name = 'nav2_params.yaml'
-    param_dir = LaunchConfiguration(
-        'params_file',
-        default=os.path.join(
-            get_package_share_directory('nunbot'),
-            'config',
-            param_file_name))
+    default_param_path = os.path.join(
+        get_package_share_directory('nunbot'),
+        'config',
+        'nav2_params.yaml'
+    )
+    param_file = LaunchConfiguration('params_file')
 
     nav2_launch_file_dir = os.path.join(get_package_share_directory('nav2_bringup'), 'launch')
 
     return LaunchDescription([
         DeclareLaunchArgument(
             'map',
-            default_value=map_dir,
+            default_value=default_map_path,
             description='Full path to map file to load'),
 
         DeclareLaunchArgument(
             'params_file',
-            default_value=param_dir,
+            default_value=default_param_path,
             description='Full path to param file to load'),
 
         DeclareLaunchArgument(
@@ -46,8 +46,8 @@ def generate_launch_description():
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource([nav2_launch_file_dir, '/bringup_launch.py']),
             launch_arguments={
-                'map': map_dir,
+                'map': map_file,
                 'use_sim_time': use_sim_time,
-                'params_file': param_dir}.items(),
+                'params_file': param_file}.items(),
         ),
     ])
