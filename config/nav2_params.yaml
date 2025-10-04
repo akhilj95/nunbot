@@ -343,20 +343,6 @@ waypoint_follower:
       enabled: True
       waypoint_pause_duration: 10
 
-velocity_smoother:
-  ros__parameters:
-    smoothing_frequency: 20.0
-    scale_velocities: False
-    feedback: "OPEN_LOOP"
-    max_velocity: [0.5, 0.5, 2.5]
-    min_velocity: [-0.5, -0.5, -2.5]
-    max_accel: [0.3, 0.3, 3.2]
-    max_decel: [-0.5, -0.5, -3.2]
-    odom_topic: "nunbot/odom"
-    odom_duration: 0.1
-    deadband_velocity: [0.0, 0.0, 0.0]
-    velocity_timeout: 1.0
-
 collision_monitor:
   ros__parameters:
     base_frame_id: "nunbot/base_footprint"
